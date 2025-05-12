@@ -1,0 +1,29 @@
+/* Copyright (c) 2022 Nordic Semiconductor ASA
+ *
+ * SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
+ */
+
+ / {
+	aliases {
+		accel0 = &accelerometer_lp;
+	};
+};
+
+&spi3 {
+	accelerometer_hp: bmi270@2 {
+		compatible = "bosch,bmi270";
+		status = "okay";
+		reg = <2>;
+		spi-max-frequency = <DT_FREQ_M(10)>;
+	};
+};
+
+&i2c2 {
+	accel: accelerometer_lp: adxl367@1d {
+		status = "okay";
+		compatible = "adi,adxl367";
+		odr = <3>;
+		reg = <0x1d>;
+	};
+
+};
